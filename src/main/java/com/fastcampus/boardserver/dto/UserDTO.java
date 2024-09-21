@@ -16,12 +16,21 @@ public class UserDTO {
     }
 
     private int id;
+
     private String userID;
+
     private String password;
+
     private String nickName;
+
     private boolean isAdmin;
+
     private Date createTime;
+
     private boolean isWithDraw;
+
     private Status status;
+
     private Date updateTime;
+
 }

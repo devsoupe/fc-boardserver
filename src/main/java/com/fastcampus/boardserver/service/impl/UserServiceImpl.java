@@ -1,15 +1,24 @@
 package com.fastcampus.boardserver.service.impl;
 
 import com.fastcampus.boardserver.dto.UserDTO;
+import com.fastcampus.boardserver.exception.DuplicateIdException;
 import com.fastcampus.boardserver.service.UserService;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Override
     public void register(UserDTO userProfile) {
+        boolean duplIdResult = isDuplicateId(userProfile.getUserID());
+        if (duplIdResult) {
+            throw new DuplicateIdException("중복된 아이디입니다.");
+        }
 
+        userProfile.setCreateTime(new Date());
+        userProfile.setPassword();
     }
 
     @Override
@@ -36,4 +45,5 @@ public class UserServiceImpl implements UserService {
     public void deleteId(String id, String password) {
 
     }
+
 }
